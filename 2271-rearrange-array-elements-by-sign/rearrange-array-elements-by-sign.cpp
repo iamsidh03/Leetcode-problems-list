@@ -1,22 +1,19 @@
 class Solution {
 public:
-    vector<int> rearrangeArray(vector<int>& nums) {
-        int n=nums.size();
-        vector<int>parr;
-        vector<int>narr;
-        vector<int>ans(n);
-        for(int i=0;i<n;i++){
-            if(nums[i]<0){
-                narr.push_back(nums[i]);
-            }else{
-                parr.push_back(nums[i]);
-            }
+    vector<int> rearrangeArray(vector<int>& arr) {
+        int n=arr.size();
+        vector<int>ans(n,0);
+        int pos=0, neg=1;
+       for(int i=0;i<n;i++){
+        if(arr[i]>0){
+            //positive is at even index
+            ans[pos]=arr[i];
+            pos+=2;
+        }else{
+            ans[neg]=arr[i];
+            neg+=2;
         }
-        int pi=0,ni=0,i=0;
-        while (pi < parr.size() && ni < narr.size()) {
-            ans[i++] = parr[pi++];
-            ans[i++] = narr[ni++];
-        }
-        return ans;
+       }
+       return ans;
     }
 };
