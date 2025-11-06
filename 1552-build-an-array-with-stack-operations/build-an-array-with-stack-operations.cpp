@@ -1,29 +1,18 @@
 class Solution {
 public:
     vector<string> buildArray(vector<int>& target, int n) {
-        
-        string pushstr="Push";
-        string popstr="Pop";
-        vector<string>ans;
-        // unordered_map<int,int>hash; //this will also works
-        // for(int i=0;i<target.size();i++){
-        //     hash[target[i]]++;
-        // }
-        unordered_set<int> hash; // unordered_set is more appropriate here
-
-        for (int num : target) {
-            hash.insert(num);
-        }
-        
-        int lastElement = target.back();
-        for(int i=1;i<=lastElement;i++){  
-            if(hash.count(i)){
-                ans.push_back(pushstr);
-            }else{
-                ans.push_back(pushstr);
-                ans.push_back(popstr);
+        vector<string> res ;
+        int j = 0 , i = 1 ;
+     while(j<target.size() && i<=n) {
+            if(target[j]!=i) {
+                res.push_back("Push");
+                res.push_back("Pop");
             }
-        }
-        return ans;
+            else {
+                res.push_back("Push");
+                j++;
+            }
+            i++;
+     }  return res ;  
     }
 };
