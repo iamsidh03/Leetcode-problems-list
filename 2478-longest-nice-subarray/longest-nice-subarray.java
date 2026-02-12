@@ -1,4 +1,4 @@
-
+/*
 class Solution {
     private boolean  isNice(int []nums,int st,int end){
         int mask=0;
@@ -27,7 +27,7 @@ class Solution {
         return maxLen;
     }
 }
-
+*/
 /*
 class Solution {
 
@@ -49,3 +49,26 @@ class Solution {
     }
 }
 */
+
+class Solution {
+
+    public int longestNiceSubarray(int[] nums) {
+
+        int mask = 0;
+        int st = 0;
+        int n = nums.length;
+        int maxlen = 0;
+        for (int i = 0; i < n; i++) {
+
+            //shrink the window and remove the value from the mask
+            while ((mask & nums[i]) != 0) {
+                mask ^= nums[st];
+                st++;
+
+            }
+            mask |= nums[i];
+            maxlen = Math.max(maxlen, i - st + 1);
+        }
+        return maxlen;
+    }
+}
