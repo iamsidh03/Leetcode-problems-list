@@ -1,4 +1,4 @@
-/*
+
 class Solution {
     private boolean  isNice(int []nums,int st,int end){
         int mask=0;
@@ -27,8 +27,8 @@ class Solution {
         return maxLen;
     }
 }
-*/
 
+/*
 class Solution {
 
     public int longestNiceSubarray(int[] nums) {
@@ -48,3 +48,4 @@ class Solution {
         return maxLen;
     }
 }
+*/
