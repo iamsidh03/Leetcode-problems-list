@@ -1,22 +1,17 @@
 class Solution {
     public int findPairs(int[] nums, int k) {
-        HashMap<Integer,Integer> map=new HashMap<>();
-        int cnt=0;
-        for(int num:nums){
-            map.put(num,map.getOrDefault(num,0)+1);
-        }
-        if(k==0){
-            //dono element equal hone chahiye tabhi 
-            for(int n:map.values()){
-                if(n>=2)cnt++;
+        Set<String> seen =new HashSet<>();
+
+        for(int i=0;i<nums.length;i++){
+
+            for(int j=i+1;j<nums.length;j++){
+                if(Math.abs(nums[i]-nums[j])==k){
+                    int a=Math.min(nums[i],nums[j]);
+                    int b=Math.max(nums[i],nums[j]);
+                    seen.add(a+","+b);
+                }
             }
         }
-        else{
-            for(int n:map.keySet()){
-                
-                if(map.containsKey(n+k))cnt++;
-            }
-        }
-        return cnt;
+        return seen.size();
     }
 }
